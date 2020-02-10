@@ -1,0 +1,11 @@
+.post {
+    display: flex;
+    align-items: center;
+}
+
+.vote {
+    width: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
