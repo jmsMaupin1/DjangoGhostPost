@@ -28,5 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('upvote/<int:id>/', views.vote_up),
     path('downvote/<int:id>/', views.vote_down),
-    path('', views.index, name='homepage')
+    path('post/<str:id>', views.detail_view),
+    path('delete/<str:id>', views.delete_post),
+    path('', views.index, name='homepage'),
 ]

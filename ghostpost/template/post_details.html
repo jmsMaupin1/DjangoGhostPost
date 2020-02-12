@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        {% if post.isBoast %}
+            <h1>Boast {{ post.datetime }} UTC</h1>
+        {% else %}
+            <h1>Roast {{ post.datetime }} UTC</h1>
+        {% endif %}
+        <h2> {{ post }}</h2>
+        <a href="/delete/{{post.secret_id}}">Delete Post</a>
+    </div>
+</body>
+</html>

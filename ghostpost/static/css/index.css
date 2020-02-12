@@ -1,3 +1,21 @@
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.up {
+    transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+}
+.container {
+    display: flex
+}
+
 .post {
     display: flex;
     align-items: center;
@@ -7,5 +25,36 @@
     width: 5vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+}
+
+.post_board {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    width: 70vw;
+}
+
+.header {
+    text-align: center;
+}
+
+.sidebar {
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: purple
+}
+
+.submit {
+    float: right;
+}
+
+.post-header {
+    font-weight: bold;
 }

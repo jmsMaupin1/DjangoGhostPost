@@ -5,24 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='{% static "css/index.css" %}' rel='stylesheet' />
+    <script src='{% static "js/queryStringGenerator.js" %}'></script>
     <title>Document</title>
 </head>
 <body>
-    <h1>Roast and Boasts</h1>
-
-    <div>
-    {% for post in data %}
-        <div class="post">
-            <div class='vote'>
-                <a href="/upvote/{{ post.id }}">up vote</a>
+    <div class='container'>
+        <div class='content'>
+            <div class="header">
+                <h1>Ghost Post Boasts and Roasts</h1>
                 <div>
-                    {{ post.total_count }}
+                    <span>sort By:</span>
+                    <a href="{{ order_url }}posted_date">posted_date</a>
+                    <a href="{{ order_url }}point_total">point_total</a>
                 </div>
-                <a href="/downvote/{{ post.id }}">down vote</a>
+                <div>
+                    <span>Filter By:</span>
+                    <a href="{{ filter_url }}boasts">boasts</a>
+                    <a href="{{ filter_url }}roasts">roasts</a>
+                </div>
             </div>
-            {{post}}
+
+            <div class="post_board">
+            {% for post in data %}
+                <div class="post">
+                    <div class='vote'>
+                        <a href="/upvote/{{ post.id }}"><i class="up"></i></a>
+                        <div>
+                            {{ post.total_count }}
+                        </div>
+                        <a href="/downvote/{{ post.id }}"><i class="down"></i></a>
+                    </div>
+                    <div>
+                        {% if post.isBoast %}
+                            <p class="post-header">Boast {{ post.datetime }} UTC</p>
+                        {% else %}
+                            <p class="post-header">Roast {{ post.datetime }} UTC</p>
+                        {% endif %}
+                        <p class="post-content">{{post}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
         </div>
-    {% endfor %}
+
+        <div class='sidebar'>
+            <h1>Add a Post here:</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class='submit' type='submit' value='Submit' />
+            </form>
+
+            {% if post_secret %}
+                <h1>You're admin link to your post is</h1>
+                <a href="/post/{{ post_secret }}" >Go to your post</a>
+                <p>Dont Lose this or you wont be able to manage your post</p>
+            {% endif %}
+        </div>
     </div>
     
 </body>
