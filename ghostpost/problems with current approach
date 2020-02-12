@@ -1,4 +1,0 @@
-problems with current approach
-
-how to build the query string, how do we handle the different cases where we either sort or filter first
-the query parameters would have to both start with /?f=filter or &f=filter depending on if we choose the filter before or after we choose the sort order respectively.
